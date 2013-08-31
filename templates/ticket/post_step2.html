@@ -1,0 +1,99 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>第二步</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body bgcolor="#FFFFFF">
+	<div>您现在的位置：<a href="/index/main.html">首页</a>-><a href="/mydomain/">我的地盘</a>-><a href="/ticket/post_step1/">我要发布</a>->第二步	<a href="/logout/">退出</a></div>
+        <table border="0" width="750" cellspacing="0" cellpadding="0">
+            <tr> 
+                <td width="100"></td>
+                <td valign="top" width="525">
+                    <form action="/ticket/post/" method="POST">
+                        <table border="0" width="100%" cellspacing="0" cellpadding="2">
+                            <tr bgcolor="#218868"> 
+                                <td><font color="#FFFFFF">第二步：请输入您要{{ infotype }}的火车票的详细信息</font></td>
+                            </tr>
+                        </table>
+                        <table width="100%" border="0" cellpadding="0" cellspacing="2">
+                            <tr valign="top"> 
+                                <td width="30%" valign="top" align="RIGHT" bgcolor="#F0F0F0" height="27"><font color="#CC3333"></font>出发车站： 
+                                </td>
+                                <td height="25"> 
+                                <select name="startStation">
+				{% for train in object_list %}
+				{% if forloop.first %}
+				<option value="{{train.startStation}}">{{train.startStation}}</option>
+				{% endif %}
+				{% if not forloop.last %}
+				<option value="{{train.destination}}">{{train.destination}}</option>
+				{% endif %}
+				{% endfor %}
+                                </td>
+				<td width="30%" valign="top" align="RIGHT" bgcolor="#F0F0F0" height="27"><font color="#CC3333"></font>到达车站： 
+                                </td>
+                                <td height="25"> 
+                                <select name="destination">
+				{% for train in object_list %}
+				<option value="{{train.destination}}">{{train.destination}}</option>
+				{% endfor %}
+                                </td>
+                            </tr>
+                            <tr valign="top"> 
+                                <td valign="top" align="RIGHT" bgcolor="#F0F0F0" height="25"><font color="#CC3333"></font>车票类型：</td>
+                                <td height="25"> 
+                                <select name="type">
+				{% for type in tickettype %}
+				<option value="{{type.title}}">{{type.title}}</option>
+				{% endfor %}
+                                </td>
+                            </tr>
+			    <tr valign="top"> 
+                                <td valign="top" align="RIGHT" bgcolor="#F0F0F0" height="25"><font color="#CC3333"></font>车票数量：</td>
+                                <td height="25"> 
+                                <select name="ticketNum">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value=">5">>5</option>
+                                </td>
+                            </tr>
+			    <tr valign="top"> 
+                                <td valign="top" align="RIGHT" bgcolor="#F0F0F0" height="25"><font color="#CC3333"></font>日期：</td>
+                                <td height="25"> 
+                                <input name="date" id="date" maxlength="10" size="10" value=""></input>
+                                </td>
+                            </tr>
+			    <tr valign="top"> 
+                                <td valign="top" align="RIGHT" bgcolor="#F0F0F0" height="25"><font color="#CC3333"></font>联系电话：</td>
+                                <td height="25"> 
+                                <input name="phone" id="phone" maxlength="15" size="12" value=""></input>
+                                </td>
+                            </tr>
+			    <tr valign="top"> 
+                                <td valign="top" align="RIGHT" bgcolor="#F0F0F0" height="25"><font color="#CC3333"></font>其他说明：</td>
+				<td height="25"> 
+                                <textarea name="extraContext" id="extraContext" cols="25" rows="6"></textarea>
+                                </td>
+                            </tr>
+                            <tr> 
+                                <td height="10"></td>
+                                <td height="10"><br></td>
+                            </tr>
+                        </table>
+                        <input type="submit" value="发布"></input>
+			<input name="infotype" type="hidden" value="{{infotype}}"></input>
+			<input name="trainNum" type="hidden" value="{{trainNum}}"></input>
+		</form>
+  </body>
+</html>

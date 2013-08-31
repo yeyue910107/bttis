@@ -1,0 +1,63 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>查询结果</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+		<div>您现在的位置：<a href="/index/main.html">首页</a>-><a href="/train/">列车查询</a>->查询结果</div>
+                        <table border="0" width="100%" cellspacing="0" cellpadding="2">
+                            <tr bgcolor="#218868"> 
+                                <td><font color="#FFFFFF">查询结果</font></td>
+                            </tr>
+                        </table>
+                        <table border="1">
+                            {% for train in train_list %}
+				{% if forloop.first %}
+				<p>{{train.trainNum}} <a href="station?station={{train.startStation}}">{{train.startStation}}</a>-<a href="station?station={{train.endStation}}">{{train.endStation}}</a>({{train.traintype.title}})</p>
+				<tr>
+    					<td>站次</td>
+					<td>站名</td>
+    					<td>发车/到达时间</td>
+    					<td>里程</td>
+					<td>运行时间</td>
+    					<td>硬座票价</td>
+    					<td>硬卧票价</td>
+    					<td>软座票价</td>
+    					<td>软卧票价</td>
+                        	</tr>
+				<tr>
+					<td align="center">{{forloop.counter}}</td>
+					<td align="center"><a href="station?station={{train.startStation}}">{{train.startStation}}</a></td>
+    					<td align="center">{{train.startTime|make_list|slice:"0:5"|join:""}}</td>
+    					<td align="center">0</td>
+					<td align="center">-</td>
+    					<td align="center">-</td>
+    					<td align="center">-</td>
+    					<td align="center">-</td>
+    					<td align="center">-</td>
+                        	</tr>
+				{% endif %}
+                            <tr>
+				<td align="center">{{forloop.counter|add:"1"}}</td>
+                            	<td align="center"><a href="station?station={{train.destination}}">{{train.destination}}</a></td>
+                            	<td align="center">{{train.desTime|make_list|slice:"0:5"|join:""}}</td>
+                            	<td align="center">{{train.mileage}}</td>
+				<td align="center">{{train.runTime|make_list|slice:"0:2"|join:""}}小时{{train.runTime|make_list|slice:"2:4"|join:""}}分钟</td>
+                            	<td align="center">{{train.hardSeatPrice}}</td>
+                            	<td align="center">{{train.hardSleeperPrice}}</td>
+                            	<td align="center">{{train.softSeatPrice}}</td>
+                            	<td align="center">{{train.softSleeperPrice}}</td>
+                            </tr>
+				
+                            {% endfor %}
+                        </table>
+  </body>
+</html>

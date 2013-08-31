@@ -1,0 +1,36 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>查询结果</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+	<div>您现在的位置：<a href="/index/main.html">首页</a>-><a href="/ticketQuery/">车票查询</a>->查询结果</div>
+                        <table border="0" width="100%" cellspacing="0" cellpadding="2">
+                            <tr bgcolor="#218868"> 
+                                <td><font color="#FFFFFF">查询结果</font></td>
+                            </tr>
+                        </table>
+			<div>
+				{{startStation}}到{{destination}}火车票信息
+			</div>
+                        <table>
+  					<div>{% if has_previous %}
+    					<a href="?page={{ previous }}&startStation={{startStation}}&destination={{destination}}">上一页</a>
+    					{% endif %} {% if has_next %}
+    					<a href="?page={{ next }}&startStation={{startStation}}&destination={{destination}}">下一页</a>
+    					{% endif %}</div>
+                        	{% for ticket_info in object_list %}
+				<div><a href="../ticket/{{ticket_info.id}}/">({{ticket_info.infotype}}) {{ticket_info.ticket.trainNum}} {{ticket_info.ticket.startStation}}-{{ticket_info.ticket.destination}}
+				 {{ticket_info.ticketNum}}张 {{ticket_info.ticket.tickettype.title}} 发布时间：{{ticket_info.time}}</a></div>
+				{% endfor %}
+                        </table>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>车票查询</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+		<div>您现在的位置：<a href="/index/main.html">首页</a>->车票查询</div>
+	<table border="0" width="750" cellspacing="0" cellpadding="0">
+    <form action="/ticketQuery/stationToStation" method="get">
+			<tr> 
+                	<td width="100"></td>
+                	<td valign="top" width="525">
+                	<table border="0" width="100%" cellspacing="0" cellpadding="2">
+                        <tr bgcolor="#218868"> 
+                        	<td><font color="#FFFFFF">站站查询</font></td>
+                        </tr>
+			<table width="100%" border="0" cellpadding="0" cellspacing="2">
+                <tr valign="top"> 
+                    <td valign="top" align="RIGHT" bgcolor="#F0F0F0" height="25">出发站：
+                    <br></td>
+                    <td height="25"> 
+                    <input name="startStation" maxlength="16" size="10" value="" id="startStation"/>
+                    <br></td>
+                </tr>
+                <tr valign="top"> 
+                    <td align="right" width="30%" bgcolor="#F0F0F0" height="25">到达站：
+                    <br></td>
+                    <td height="25">
+                    <input name="destination" size="10" maxlength="16" value="" id="destination"/>
+                    <br></td>
+                </tr>
+    	</table>
+		<input type="submit" value="查询"/>
+		</form>
+	</table>
+	<table border="0" width="750" cellspacing="0" cellpadding="0">
+		<form action="/ticketQuery/trainNum" method="get">
+			<tr> 
+                	<td width="100"></td>
+                	<td valign="top" width="525">
+                	<table border="0" width="100%" cellspacing="0" cellpadding="2">
+                        <tr bgcolor="#218868"> 
+                        	<td><font color="#FFFFFF">车次查询</font></td>
+                        </tr>
+			<table width="100%" border="0" cellpadding="0" cellspacing="2">
+				<tr valign="top"> 
+					<td width="30%" valign="top" align="RIGHT" bgcolor="#F0F0F0" height="27">请输入车次： 
+					<br></td>
+					<td width="70%" height="27"> 
+						<input name="trainNum" size="6" maxlength="6" value="" id="trainNum"/>
+					<br></td>
+				</tr>
+    	</table>
+		<input type="submit" value="查询"/>
+		</form>
+	</table>
+  </body>
+</html>
